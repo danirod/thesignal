@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="256"
+   viewBox="0 0 135.46666 67.733333"
+   version="1.1"
+   id="svg5"
+   inkscape:export-filename="..\assets\warning1.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="warning.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#bdc210"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.0444209"
+     inkscape:cx="112.50254"
+     inkscape:cy="41.171141"
+     inkscape:window-width="2048"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:22.9514px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI Bold';fill:#000000;stroke-width:0.903714;stroke-opacity:0.252252"
+       x="25.604065"
+       y="21.857925"
+       id="text236"
+       transform="scale(1.0298669,0.97099925)"><tspan
+         sodipodi:role="line"
+         id="tspan234"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Fixedsys Excelsior';-inkscape-font-specification:'Fixedsys Excelsior Bold';fill:#000000;stroke-width:0.903714"
+         x="25.604065"
+         y="21.857925">WARNING</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.9339px;line-height:0.8;font-family:'OCR A Extended';-inkscape-font-specification:'OCR A Extended Bold';fill:#000000;stroke-width:0.548651;stroke-opacity:0.252252"
+       x="67.297897"
+       y="36.905254"
+       id="text450"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Fixedsys Excelsior';-inkscape-font-specification:'Fixedsys Excelsior Bold';text-align:center;text-anchor:middle;stroke-width:0.548651;fill:#000000"
+         x="67.297897"
+         y="36.905254"
+         id="tspan504">INTRUSION DETECTED</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Fixedsys Excelsior';-inkscape-font-specification:'Fixedsys Excelsior Bold';text-align:center;text-anchor:middle;stroke-width:0.548651;fill:#000000"
+         x="67.297897"
+         y="48.409695"
+         id="tspan410">ACTIVATING DEFENSE</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Fixedsys Excelsior';-inkscape-font-specification:'Fixedsys Excelsior Bold';text-align:center;text-anchor:middle;stroke-width:0.548651;fill:#000000"
+         x="67.297897"
+         y="59.914131"
+         id="tspan412">START FEED SYSTEM</tspan></text>
+  </g>
+</svg>

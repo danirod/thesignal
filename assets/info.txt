@@ -1,0 +1,56 @@
+THE SIGNAL is a game created by DANIROD for the LIBGDX JAM 27
+
+Source code: https://github.com/danirod/thesignal
+Stuff is uploaded to: https://danirod.itch.io/
+
+CREDITS
+
+Images and drawings are my own this time (that's why they are so unprofessional)
+Most of the sounds come from Kenney assets library.
+
+THANKS
+
+Well, I didn't expect to get so far but here is another submission.
+
+First submission in Kotlin, yay!
+
+As usual, thank you to the people who have been watching the development as it happened live on my Twitch channel. (By the way, shameless plug, they happen at https://twitch.tv/danirod_)
+
+Specifically to the following people who acquired the privilege of being in the credits by channel reward:
+
+Guerra24_
+ssmatiuri
+ckmu32
+Niv3k_El_Pato
+likendero
+Klairm_ ("El Klairmo")
+davibern_
+ivantheragingpython
+jemma1202
+lam277
+dannywolfmx2
+Pesetas4
+DHardySD
+e4yttuh
+echoguillem
+javier_developer
+hellsing2030
+leo_develop
+CodeSectarian
+Forrest1789
+BasileusErwin
+brian122k
+messer199
+Neryad
+SkyBerron
+nMarulo
+smolsweety
+cdecompilador
+pacho901
+elVagoTech
+bulbsum
+Agustinjzp
+promasterfox
+silverknight3
+
+Also, some of my viewers would like me to specifically mention Afordin.
