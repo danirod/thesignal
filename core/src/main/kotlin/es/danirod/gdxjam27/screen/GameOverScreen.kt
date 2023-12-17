@@ -1,29 +1,16 @@
 package es.danirod.gdxjam27.screen
 
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.ScreenAdapter
-import com.badlogic.gdx.graphics.GL20
-import com.badlogic.gdx.scenes.scene2d.Stage
-import com.badlogic.gdx.utils.viewport.ScreenViewport
+import com.badlogic.gdx.scenes.scene2d.ui.Table
+import com.badlogic.gdx.utils.Align
 import es.danirod.gdxjam27.State
 import es.danirod.gdxjam27.TheSignalGame
 import es.danirod.gdxjam27.actors.ui.MenuButton
 
-class GameOverScreen(private val game: TheSignalGame, state: State): ScreenAdapter() {
+class GameOverScreen(game: TheSignalGame, state: State): BaseScreen(game) {
 
-    private val stage = Stage(ScreenViewport())
+    private val gameOver = game.label("GAME OVER", 0.5f)
 
-    private val gameOver = game.label("GAME OVER").apply {
-        setFontScale(2f)
-        setScale(2f)
-    }
-
-    private val goodBye = run {
-        // For some reason toInt() fails on TeaVM, so here we are
-        val secs = "${state.time}"
-        val integerPart = secs.split("\\.")[0]
-        game.label("You survived for $integerPart. Not bad.")
-    }
+    private val goodBye = game.label("You survived for ${state.time.toInt()} seconds. Not bad.", 0.25f)
 
     private val back = MenuButton.newButton(game, "BACK") {
         val mainMenu = MainMenuScreen(game)
@@ -31,25 +18,16 @@ class GameOverScreen(private val game: TheSignalGame, state: State): ScreenAdapt
     }
 
     override fun show() {
-        gameOver.setPosition((stage.viewport.worldWidth - gameOver.width * 2f) / 2f, 380f)
-        goodBye.setPosition((stage.viewport.worldWidth - goodBye.width) / 2f, (stage.viewport.worldHeight - goodBye.height) / 2)
-        back.setPosition((stage.viewport.worldWidth - back.width * 3f) / 2f, 50f)
+        super.show()
 
-        stage.addActor(gameOver)
-        stage.addActor(goodBye)
-        stage.addActor(back)
+        val table = Table()
+        table.width = stage.viewport.worldWidth
+        table.height = stage.viewport.worldHeight
+        stage.addActor(table)
 
-        Gdx.input.inputProcessor = stage
+        table.align(Align.center)
+        table.add(gameOver).pad(15f).row()
+        table.add(goodBye).expand().padLeft(15f).padRight(15f).row()
+        table.add(back).pad(15f).row()
     }
-
-    override fun render(delta: Float) {
-        Gdx.gl.glClearColor(0f, 0f, 0f, 1f)
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
-
-        super.render(delta)
-        stage.act(delta)
-        stage.draw()
-    }
-
-
 }

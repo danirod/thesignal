@@ -3,7 +3,6 @@ package es.danirod.gdxjam27.actors.ui
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Batch
-import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.utils.Scaling
@@ -16,19 +15,19 @@ class Bar(bar: Texture, private val palette: Texture, initial: Int): Table() {
         set(value) {
             field = when {
                 value < 0 -> 0
-                value > 31 -> 31
+                value > 15 -> 15
                 else -> value
             }
             for (visible in 0..field) {
                 getChild(visible).color.a = 1f
             }
-            for (invisible in (field+1)..31) {
+            for (invisible in (field+1)..15) {
                 getChild(invisible).color.a = 0f
             }
         }
 
     init {
-        for (i in 0..31) {
+        for (i in 0..15) {
             val slot = Image(bar)
                 .apply { color = getColorAtPixel(i) }
                 .also { it.setScaling(Scaling.stretch) }

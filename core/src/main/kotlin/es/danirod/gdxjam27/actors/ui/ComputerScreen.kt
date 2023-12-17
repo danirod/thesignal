@@ -1,19 +1,17 @@
 package es.danirod.gdxjam27.actors.ui
 
-import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.scenes.scene2d.ui.Table
-import com.badlogic.gdx.utils.Align
 import es.danirod.gdxjam27.State
 import es.danirod.gdxjam27.TheSignalGame
 
 class ComputerScreen(game: TheSignalGame, private val state: State) : Table() {
 
-    private val bufferLabel = game.label("BUFFER:")
+    private val bufferLabel = game.label("BUFFER:", 0.25f)
 
     private val bufferBar = run {
         val bar = game.manager.get("bar.png", Texture::class.java)

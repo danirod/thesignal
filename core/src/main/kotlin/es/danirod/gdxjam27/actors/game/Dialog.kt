@@ -3,7 +3,6 @@ package es.danirod.gdxjam27.actors.game
 import com.badlogic.gdx.Input
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
-import com.badlogic.gdx.scenes.scene2d.Group
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.InputListener
 import com.badlogic.gdx.scenes.scene2d.ui.Image
@@ -14,7 +13,7 @@ import es.danirod.gdxjam27.TheSignalGame
 
 class Dialog(game: TheSignalGame, message: CharSequence, background: Boolean, private val callback: () -> Unit): Stack() {
 
-    private val content = game.label("$message\n").apply {
+    private val content = game.label("$message\n", 0.25f).apply {
         wrap = true
     }
 
@@ -36,12 +35,12 @@ class Dialog(game: TheSignalGame, message: CharSequence, background: Boolean, pr
         }
 
         val pressEnter = Table()
-        val pressEnterText = game.label("PRESS ENTER TO CONTINUE")
+        val pressEnterText = game.label("PRESS ENTER TO CONTINUE", 0.15f)
         pressEnter.add(pressEnterText).align(Align.bottomRight).pad(0f, 0f, 5f, 10f).expand()
         add(pressEnter)
     }
 
-    private inner class EnterInputListener() : InputListener() {
+    private inner class EnterInputListener : InputListener() {
         override fun keyDown(event: InputEvent?, keycode: Int) = when (keycode) {
             Input.Keys.ENTER -> true
             Input.Keys.SPACE -> true

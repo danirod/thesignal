@@ -1,8 +1,6 @@
 package es.danirod.gdxjam27
 
 import com.badlogic.gdx.Game
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.Input
 import com.badlogic.gdx.Screen
 import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.audio.Sound
@@ -11,9 +9,6 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle
-import es.danirod.gdxjam27.screen.GameOverScreen
-import es.danirod.gdxjam27.screen.GameScreen
-import es.danirod.gdxjam27.screen.IntroScreen
 import es.danirod.gdxjam27.screen.MainMenuScreen
 
 class TheSignalGame : Game() {
@@ -72,7 +67,10 @@ class TheSignalGame : Game() {
     }
 
     /** Wrapper to generate a label. */
-    fun label(text: CharSequence) = Label(text, labelStyle)
+    fun label(text: CharSequence, scale: Float) = Label(text, labelStyle).apply {
+        setFontScale(scale)
+        setScale(scale)
+    }
 
     fun switchScreen(newScreen: Screen) {
         val oldScreen = getScreen()

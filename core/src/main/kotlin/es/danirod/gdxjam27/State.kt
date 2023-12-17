@@ -2,7 +2,7 @@ package es.danirod.gdxjam27
 
 class State(val difficulty: Difficulty) {
 
-    var buffer: Int = 31
+    var buffer: Int = 15
 
     private var elapsedTime: Float = 0f
 

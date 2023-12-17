@@ -2,12 +2,12 @@ package es.danirod.gdxjam27.teavm;
 
 import com.github.xpenatan.gdx.backends.teavm.config.TeaBuildConfiguration;
 import com.github.xpenatan.gdx.backends.teavm.config.TeaBuilder;
-import com.github.xpenatan.gdx.backends.teavm.config.plugins.TeaReflectionSupplier;
 import com.github.xpenatan.gdx.backends.teavm.gen.SkipClass;
-import java.io.File;
-import java.io.IOException;
 import org.teavm.tooling.TeaVMTool;
 import org.teavm.vm.TeaVMOptimizationLevel;
+
+import java.io.File;
+import java.io.IOException;
 
 /** Builds the TeaVM/HTML application. */
 @SkipClass
@@ -27,7 +27,7 @@ public class TeaVMBuilder {
         tool.setMainClass(TeaVMLauncher.class.getName());
         // For many (or most) applications, using the highest optimization won't add much to build time.
         // If your builds take too long, and runtime performance doesn't matter, you can change FULL to SIMPLE .
-        tool.setOptimizationLevel(TeaVMOptimizationLevel.FULL);
+        tool.setOptimizationLevel(TeaVMOptimizationLevel.SIMPLE);
         TeaBuilder.build(tool);
     }
 }

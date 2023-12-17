@@ -1,32 +1,28 @@
 package es.danirod.gdxjam27.screen
 
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.Input
-import com.badlogic.gdx.ScreenAdapter
 import com.badlogic.gdx.audio.Sound
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
-import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.actions.Actions
 import com.badlogic.gdx.scenes.scene2d.ui.Image
-import com.badlogic.gdx.utils.viewport.ScreenViewport
 import es.danirod.gdxjam27.State
 import es.danirod.gdxjam27.TheSignalGame
 import es.danirod.gdxjam27.actors.env.Window
 import es.danirod.gdxjam27.actors.game.Dialog
 import es.danirod.gdxjam27.actors.ui.*
 
-class GameScreen(private val game: TheSignalGame, private val state: State) : ScreenAdapter() {
+class GameScreen(game: TheSignalGame, private val state: State) : BaseScreen(game) {
 
     /** Whatever you see outside of the window, including the aliens. */
-    val outsideWindow = Window(game.manager, this).apply {
+    private val outsideWindow = Window(game.manager, this).apply {
         setScale(0.3f)
         setPosition(675f, 190f)
     }
 
     /** The main fullscreen image which also acts as a cover for the window and as a background for the PC. */
-    val mainConsoleImage = run {
+    private val mainConsoleImage = run {
         val consoleTexture = game.manager.get("console.png", Texture::class.java)
         val consoleRegion = TextureRegion(consoleTexture, 0, 0, 854, 480)
         Image(consoleRegion).apply {
@@ -35,19 +31,16 @@ class GameScreen(private val game: TheSignalGame, private val state: State) : Sc
     }
 
     /** Printer used to render characters. */
-    val printer = run {
+    private val printer = run {
         val numbers = game.manager.get("numbers.png", Texture::class.java)
         CharacterPrinter(numbers)
     }
 
     /** The computer screen where the data is presented. */
-    val computerScreen = ComputerScreen(game, state).also { actor ->
+    private val computerScreen = ComputerScreen(game, state).also { actor ->
         actor.setPosition(75f, 170f)
         actor.setSize(350f, 220f)
     }
-
-    /** The stage that coordinates all these actors. */
-    val stage = Stage(ScreenViewport())
 
     private val gameStartScript = listOf(
         "Oh, snap! An invasion. I thought this would be a quiet night.",
@@ -62,6 +55,9 @@ class GameScreen(private val game: TheSignalGame, private val state: State) : Sc
         "(Do not let the operations fill the buffer or the system will crash.)",
         "(Good luck.)",
     )
+
+    /** Will not update the state timer unless this is true. */
+    private var isActuallyPlaying = false
 
     /** Configure the main UI. */
     private fun setUpStage() {
@@ -80,7 +76,7 @@ class GameScreen(private val game: TheSignalGame, private val state: State) : Sc
     }
 
     override fun show() {
-        Gdx.input.inputProcessor = stage
+        super.show()
         setUpStage()
         initFadeIn()
     }
@@ -112,16 +108,12 @@ class GameScreen(private val game: TheSignalGame, private val state: State) : Sc
         stage.draw()
     }
 
-    override fun resize(width: Int, height: Int) {
-        stage.viewport.update(width, height)
-    }
-
     fun stateOfEmergency() {
         computerScreen.triggerBSOD()
         outsideWindow.destroyAnntenas()
     }
 
-    fun initFadeIn() {
+    private fun initFadeIn() {
         val blank = Image(game.manager.get("blank.png", Texture::class.java))
         blank.width = stage.viewport.worldWidth
         blank.height = stage.viewport.worldHeight
@@ -150,8 +142,6 @@ class GameScreen(private val game: TheSignalGame, private val state: State) : Sc
             ),
         )
     }
-
-    private var isActuallyPlaying = false
 
     private fun nextDialogLine(line: Int) {
         val dialog = stage.actors.find { ch -> ch is Dialog }

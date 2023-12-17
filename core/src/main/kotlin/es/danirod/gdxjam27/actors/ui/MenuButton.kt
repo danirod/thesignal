@@ -1,29 +1,31 @@
 package es.danirod.gdxjam27.actors.ui
 
 import com.badlogic.gdx.graphics.Color
+import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.scenes.scene2d.Actor
-import com.badlogic.gdx.scenes.scene2d.InputEvent
-import com.badlogic.gdx.scenes.scene2d.InputListener
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener
 import es.danirod.gdxjam27.TheSignalGame
 
 object MenuButton {
 
-    fun newButton(game: TheSignalGame, text: CharSequence, callback: () -> Unit) = game.label(text)
-        .apply {
-            setScale(3f)
-            setFontScale(3f)
-        }.also { lbl ->
-            lbl.addListener(object : InputListener() {
-                override fun enter(event: InputEvent, x: Float, y: Float, pointer: Int, fromActor: Actor?) {
-                    event.target.color = Color.CYAN
-                }
-                override fun exit(event: InputEvent, x: Float, y: Float, pointer: Int, toActor: Actor?) {
-                    event.target.color = Color.WHITE
-                }
-                override fun touchDown(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int): Boolean = button == 0
-                override fun touchUp(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int) {
-                    callback()
-                }
-            })
-        }
+    fun newButton(game: TheSignalGame, text: String, callback: () -> Unit): Actor {
+        val style = TextButtonStyle()
+        style.font = game.manager.get("fixedsys.fnt", BitmapFont::class.java)
+        style.fontColor = Color.WHITE
+        style.overFontColor = Color.CYAN
+
+        val button = TextButton(text, style)
+        button.isTransform = true
+        button.setScale(0.66f)
+        button.addListener(object : ChangeListener() {
+            override fun changed(event: ChangeEvent?, actor: Actor?) {
+                callback()
+            }
+
+        })
+
+        return button
+    }
 }

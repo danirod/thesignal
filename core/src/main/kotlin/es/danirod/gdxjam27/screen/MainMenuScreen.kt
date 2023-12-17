@@ -1,17 +1,15 @@
 package es.danirod.gdxjam27.screen
 
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.ScreenAdapter
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
-import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Image
+import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.Scaling
 import es.danirod.gdxjam27.TheSignalGame
 import es.danirod.gdxjam27.actors.ui.MenuButton
 
-class MainMenuScreen(private val game: TheSignalGame) : ScreenAdapter() {
+class MainMenuScreen(game: TheSignalGame) : BaseScreen(game) {
 
     private val forest = run {
         val texture = game.manager.get("forest.png", Texture::class.java)
@@ -21,7 +19,9 @@ class MainMenuScreen(private val game: TheSignalGame) : ScreenAdapter() {
     private val logo = run {
         val texture = game.manager.get("thesignal.png", Texture::class.java)
         val region = TextureRegion(texture, 788, 152)
-        Image(region)
+        Image(region).apply {
+            setScaling(Scaling.fit)
+        }
     }
 
     private val play = MenuButton.newButton(game, "PLAY") {
@@ -34,29 +34,21 @@ class MainMenuScreen(private val game: TheSignalGame) : ScreenAdapter() {
         game.switchScreen(info)
     }
 
-    private val stage = Stage()
-
     override fun show() {
+        super.show()
+
         forest.width = stage.viewport.worldWidth
         forest.height = stage.viewport.worldHeight
         forest.setScaling(Scaling.fillX)
         forest.align = Align.top
-
         stage.addActor(forest)
-        logo.setPosition((stage.viewport.worldWidth - logo.width) / 2, stage.viewport.worldHeight - logo.height - 50)
-        stage.addActor(logo)
 
-        play.setPosition(150f, 120f)
-        info.setPosition(550f, 120f)
-        stage.addActor(play)
-        stage.addActor(info)
-        Gdx.input.inputProcessor = stage
+        val table = Table()
+        table.add(logo).colspan(2).expand().padLeft(80f).padRight(80f).height(200f).row()
+        table.add(play).expandX()
+        table.add(info).expandX()
+        table.width = stage.viewport.worldWidth
+        table.y = (stage.viewport.worldHeight - table.height) / 2
+        stage.addActor(table)
     }
-
-    override fun render(delta: Float) {
-        super.render(delta)
-        stage.act(delta)
-        stage.draw()
-    }
-
 }
